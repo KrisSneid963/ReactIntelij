@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Back/src/main/resources" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Back/src/main/resources/react-IntelijIdea" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/react-IntelijIdea" vcs="Git" />
+  </component>
+</project>
