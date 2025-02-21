@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { postData } from "../helpers/post";
-
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { postData } from "../../helpers/post";
 
 const Registration = () => {
     const { register, formState: { errors }, reset, handleSubmit } = useForm();
     const [loading, setLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    const navigate = useNavigate(); // Initialize useNavigate hook
 
     const onSubmit = async (data) => {
         setLoading(true);
@@ -17,6 +18,7 @@ const Registration = () => {
             await postData(data);
             reset();
             setSuccessMessage('Registration successful!');
+            navigate('/tours'); // Navigate to the tours page after successful registration
         } catch (error) {
             setErrorMessage(error.response?.data?.message || 'Failed to register. Please try again.');
         } finally {

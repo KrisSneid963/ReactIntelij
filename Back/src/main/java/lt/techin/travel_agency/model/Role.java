@@ -11,7 +11,7 @@ public class Role implements GrantedAuthority {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;  // ✅ Changed from `byte` to `Long`
+  private Long id;
 
   @Column(unique = true, nullable = false)
   private String name; // Example: "ROLE_USER", "ROLE_ADMIN"
@@ -21,7 +21,7 @@ public class Role implements GrantedAuthority {
 
   public Role() {}
 
-  public Long getId() {  // ✅ Changed return type to Long
+  public Long getId() {
     return id;
   }
 
@@ -43,6 +43,6 @@ public class Role implements GrantedAuthority {
 
   @Override
   public String getAuthority() {
-    return name;  // ✅ Spring Security will recognize this role
+    return name;
   }
 }

@@ -4,6 +4,5 @@
     <mapping directory="$PROJECT_DIR$/../.." vcs="" />
     <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/main/resources" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/main/resources/react-IntelijIdea" vcs="Git" />
   </component>
 </project>

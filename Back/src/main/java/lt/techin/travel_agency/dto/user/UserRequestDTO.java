@@ -24,5 +24,5 @@ public record UserRequestDTO(
         )
         String password,
 
-        String role // ✅ Ensure this field is sent from React
+        String role
 ) {}

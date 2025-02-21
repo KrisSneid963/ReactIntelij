@@ -55,6 +55,8 @@ public class SecurityConfig {
             .authorizeHttpRequests((auth) -> auth
                     .requestMatchers(HttpMethod.POST, "/api/token").permitAll()
                     .requestMatchers(HttpMethod.POST, "api/register").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/tours/**").permitAll()
+//                    .requestMatchers(HttpMethod.GET, "/uploads/**").permitAll()
                     .anyRequest().authenticated());
     return http.build();
   }
