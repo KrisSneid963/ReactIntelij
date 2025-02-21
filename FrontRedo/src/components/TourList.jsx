@@ -30,7 +30,7 @@ const TourList = () => {
                             <img src={tour.imageUrl} alt={tour.title} className="w-full h-40 object-cover" />
                             <h2 className="text-lg font-semibold">{tour.title}</h2>
                             <p className="text-gray-600">Category: {tour.category}</p>
-                            <p className="text-gray-800">Price: ${tour.price}</p>
+                            <p className="text-gray-800">Price: €{tour.price}</p>
                         </div>
                     ))}
                 </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { postData } from "../../helpers/post";
@@ -8,7 +8,8 @@ const Registration = () => {
     const [loading, setLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
-    const navigate = useNavigate(); // Initialize useNavigate hook
+    const [isRegistered, setIsRegistered] = useState(false); 
+    const navigate = useNavigate();
 
     const onSubmit = async (data) => {
         setLoading(true);
@@ -18,18 +19,29 @@ const Registration = () => {
             await postData(data);
             reset();
             setSuccessMessage('Registration successful!');
-            navigate('/tours'); // Navigate to the tours page after successful registration
+            setIsRegistered(true);
         } catch (error) {
             setErrorMessage(error.response?.data?.message || 'Failed to register. Please try again.');
         } finally {
             setLoading(false);
         }
-    }
+    };
+
+    
+    useEffect(() => {
+        if (isRegistered) {
+            const timer = setTimeout(() => {
+                navigate('/tours'); 
+            }, 3000);
+
+            return () => clearTimeout(timer); 
+        }
+    }, [isRegistered, navigate]);
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
             <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
-                <h2 className="text-2xl font-bold text-center text-amber-950">Register</h2>
+                <h2 className="text-2xl font-bold text-center text-neutral-800">Register</h2>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                     <div>
                         <label className="block text-sm font-medium text-gray-700">Name</label>
@@ -64,11 +76,12 @@ const Registration = () => {
                     <button
                         type="submit"
                         className="w-full px-4 py-2 font-medium text-white bg-green-500 hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-200"
+                        disabled={loading}
                     >
                         {loading ? "Submitting..." : "Submit"}
                     </button>
                     {errorMessage && <p className="mt-2 text-sm text-red-600">{errorMessage}</p>}
-                    {successMessage && <p className="mt-2 text-sm text-green-600">{successMessage}</p>}
+                    {successMessage && <p className="mt-2 text-sm text-green-600 text-center">{successMessage}</p>}
                 </form>
             </div>
         </div>
