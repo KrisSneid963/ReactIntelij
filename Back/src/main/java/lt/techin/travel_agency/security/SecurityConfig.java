@@ -56,7 +56,10 @@ public class SecurityConfig {
                     .requestMatchers(HttpMethod.POST, "/api/token").permitAll()
                     .requestMatchers(HttpMethod.POST, "api/register").permitAll()
                     .requestMatchers(HttpMethod.GET, "/api/tours/**").permitAll()
-//                    .requestMatchers(HttpMethod.GET, "/uploads/**").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/bookings/**").authenticated()
+                    .requestMatchers(HttpMethod.POST, "/api/tours/**").hasRole("ADMIN")
+                    .requestMatchers(HttpMethod.PUT, "/api/tours/**").hasRole("ADMIN")
+                    .requestMatchers(HttpMethod.DELETE, "/api/tours/**").hasRole("ADMIN")
                     .anyRequest().authenticated());
     return http.build();
   }

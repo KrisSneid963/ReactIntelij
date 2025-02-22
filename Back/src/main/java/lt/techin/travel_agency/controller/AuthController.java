@@ -36,13 +36,11 @@ public class AuthController {
             return ResponseEntity.badRequest().body("Error: Email is already in use!");
         }
 
-        // Create user object
         User user = new User();
         user.setName(request.name());
         user.setEmail(request.email());
         user.setPassword(passwordEncoder.encode(request.password()));
 
-        // Find role or default to ROLE_USER
         String roleName = (request.role() != null && request.role().equalsIgnoreCase("ROLE_ADMIN"))
                 ? "ROLE_ADMIN"
                 : "ROLE_USER";
@@ -53,7 +51,6 @@ public class AuthController {
             return ResponseEntity.badRequest().body("Error: Role " + roleName + " not found.");
         }
 
-        // Assign role
         user.setRoles(Collections.singletonList(roleOpt.get()));
         userRepository.save(user);
 

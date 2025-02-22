@@ -1,8 +1,11 @@
 package lt.techin.travel_agency.controller;
 
 import lt.techin.travel_agency.dto.travel.TourResponseDTO;
+import lt.techin.travel_agency.model.Tour;
 import lt.techin.travel_agency.model.TourCategory;
 import lt.techin.travel_agency.service.TourService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -28,15 +31,20 @@ public class TourController {
         return tourService.getToursByCategory(category);
     }
 
-    // GET tours under a maximum price
-    @GetMapping("/price/{maxPrice}")
-    public List<TourResponseDTO> getToursByMaxPrice(@PathVariable BigDecimal maxPrice) {
-        return tourService.getToursByMaxPrice(maxPrice);
-    }
-
     // GET tours by keyword in title
     @GetMapping("/search")
     public List<TourResponseDTO> searchToursByTitle(@RequestParam String title) {
         return tourService.searchToursByTitle(title);
     }
+    @PostMapping
+    public ResponseEntity<TourResponseDTO> createTour(@RequestBody Tour tour) {
+        TourResponseDTO createdTour = tourService.createTour(tour);
+        return new ResponseEntity<>(createdTour, HttpStatus.CREATED);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTour(@PathVariable Long id) {
+        tourService.deleteTour(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
