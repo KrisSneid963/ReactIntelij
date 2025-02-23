@@ -25,13 +25,11 @@ public class TourController {
         return tourService.getAllTours();
     }
 
-    // GET tours by category
     @GetMapping("/category/{category}")
     public List<TourResponseDTO> getToursByCategory(@PathVariable TourCategory category) {
         return tourService.getToursByCategory(category);
     }
 
-    // GET tours by keyword in title
     @GetMapping("/search")
     public List<TourResponseDTO> searchToursByTitle(@RequestParam String title) {
         return tourService.searchToursByTitle(title);

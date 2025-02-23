@@ -6,6 +6,9 @@ import lt.techin.travel_agency.model.User;
 import lt.techin.travel_agency.repository.RoleRepository;
 import lt.techin.travel_agency.repository.UserRepository;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +19,7 @@ import java.util.Optional;
 //auth
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "*")  // ✅ Allow frontend calls
+@CrossOrigin(origins = "*")
 public class AuthController {
 
     private final UserRepository userRepository;
@@ -56,4 +59,18 @@ public class AuthController {
 
         return ResponseEntity.ok("User registered successfully!");
     }
+//    @PostMapping("/login")
+//    public ResponseEntity<?> loginUser(@RequestBody UserRequestDTO request) {
+//        // Authentication logic
+//        Authentication authentication = authenticationManager.authenticate(
+//                new UsernamePasswordAuthenticationToken(request.email(), request.password())
+//        );
+//
+//        // If authentication is successful, generate a token
+//        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+//        String token = jwtTokenProvider.generateToken(userDetails.getUsername());
+//
+//        // Return the token to the client
+//        return ResponseEntity.ok(new JwtAuthenticationResponse(token));
+//    }
 }
