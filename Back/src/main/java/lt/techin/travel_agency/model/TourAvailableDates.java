@@ -2,23 +2,27 @@ package lt.techin.travel_agency.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
 @Getter
-@Entity // ✅ Add this annotation to make it a proper JPA Entity
-@Table(name = "tour_available_dates") // ✅ Ensure correct table mapping
+@Entity
+@Table(name = "tour_available_dates")
 public class TourAvailableDates implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // ✅ Ensure primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne // ✅ Properly map the relationship to the Tour entity
+    @Setter
+    @ManyToOne
     @JoinColumn(name = "tour_id", nullable = false)
     private Tour tour;
 
+    @Setter
     @Column(nullable = false)
     private LocalDate availableDate;
 
@@ -26,14 +30,6 @@ public class TourAvailableDates implements Serializable {
 
     public TourAvailableDates(Tour tour, LocalDate availableDate) {
         this.tour = tour;
-        this.availableDate = availableDate;
-    }
-
-    public void setTour(Tour tour) {
-        this.tour = tour;
-    }
-
-    public void setAvailableDate(LocalDate availableDate) {
         this.availableDate = availableDate;
     }
 

@@ -14,7 +14,7 @@ public class Role implements GrantedAuthority {
   private Long id;
 
   @Column(unique = true, nullable = false)
-  private String name; // Example: "ROLE_USER", "ROLE_ADMIN"
+  private String name; // ROLE_USER ROLE_ADMIN
 
   @ManyToMany(fetch = FetchType.EAGER, mappedBy = "roles")
   private List<User> users = new ArrayList<>();

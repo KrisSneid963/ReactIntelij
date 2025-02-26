@@ -15,7 +15,7 @@ const Login = () => {
                 body: JSON.stringify({ email, password }),
             });
 
-            if (!response.ok) throw new Error("Invalid credentials");
+            if (!response.ok) throw new Error("Probably unauthorized/see console");
 
             const data = await response.json();
             localStorage.setItem("token", data.token);

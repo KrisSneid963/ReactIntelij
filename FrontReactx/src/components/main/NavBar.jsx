@@ -3,26 +3,26 @@ import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const isLoggedIn = localStorage.getItem("token"); // Check if user is logged in
+  const isLoggedIn = localStorage.getItem("token"); 
 
   const handleLogin = () => {
     if (isLoggedIn) {
       localStorage.removeItem("token");
       localStorage.removeItem("userId");
-      navigate("/"); // Redirect to home after logout
+      navigate("/"); 
     } else {
-      navigate("/login"); // Redirect to login page
+      navigate("/login"); 
     }
   };
 
   const handleRegister = () => {
-    navigate("/register"); // Redirect to register page
+    navigate("/register"); 
   };
 
   return (
     <nav className="bg-green-600 p-4 flex justify-between items-center">
       <h1 className="text-white text-lg font-bold">Vilnius Tours</h1>
-      <div className="flex items-center space-x-4"> {/* Flex container for buttons */}
+      <div className="flex items-center space-x-4"> 
         {!isLoggedIn ? (
           <>
             <button

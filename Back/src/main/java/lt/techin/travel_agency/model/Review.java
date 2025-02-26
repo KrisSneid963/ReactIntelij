@@ -18,7 +18,7 @@ public class Review {
     private Tour tour;
 
     @Column(nullable = false)
-    private int rating; // Rating from 1 to 5
+    private int rating;
 
     @Column(length = 500)
     private String comment;

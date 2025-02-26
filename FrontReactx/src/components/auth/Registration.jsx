@@ -26,14 +26,14 @@ const Registration = () => {
             localStorage.setItem("userEmail", response.email);
     
             reset();
-            setSuccessMessage('✅ Registration successful! Redirecting...');
+            setSuccessMessage('Registration successful! Redirecting...');
             setIsRegistered(true);
     
             setTimeout(() => {
                 navigate('/my-bookings'); 
             }, 2000);
         } catch (error) {
-            setErrorMessage(error.response?.data?.message || '⚠️ Registration failed. Please try again.');
+            setErrorMessage(error.response?.data?.message || 'Registration failed. Please try again.');
         } finally {
             setLoading(false);
         }

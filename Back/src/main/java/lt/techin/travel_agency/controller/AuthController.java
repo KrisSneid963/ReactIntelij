@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collections;
 import java.util.Optional;
 
-//auth
+
 @RestController
 @RequestMapping("/api/auth")
 @CrossOrigin(origins = "*")
@@ -59,18 +59,5 @@ public class AuthController {
 
         return ResponseEntity.ok("User registered successfully!");
     }
-//    @PostMapping("/login")
-//    public ResponseEntity<?> loginUser(@RequestBody UserRequestDTO request) {
-//        // Authentication logic
-//        Authentication authentication = authenticationManager.authenticate(
-//                new UsernamePasswordAuthenticationToken(request.email(), request.password())
-//        );
-//
-//        // If authentication is successful, generate a token
-//        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-//        String token = jwtTokenProvider.generateToken(userDetails.getUsername());
-//
-//        // Return the token to the client
-//        return ResponseEntity.ok(new JwtAuthenticationResponse(token));
-//    }
+
 }

@@ -44,5 +44,14 @@ public class TourController {
         tourService.deleteTour(id);
         return ResponseEntity.noContent().build();
     }
+    @PostMapping("/{tourId}/dates")
+    public ResponseEntity<?> addTourDates(@PathVariable Long tourId, @RequestBody List<String> dates) {
+        return tourService.addTourDates(tourId, dates);
+    }
+    @DeleteMapping("/{tourId}/dates")
+    public ResponseEntity<?> deleteTourDates(@PathVariable Long tourId, @RequestBody List<String> dates) {
+        return tourService.deleteTourDates(tourId, dates);
+    }
+
 
 }

@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-//AS ADMIN POST POSTMAN
+
 public record TourRequestDTO(
         @NotBlank(message = "Title cannot be empty")
         String title,

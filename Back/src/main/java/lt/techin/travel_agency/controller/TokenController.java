@@ -24,7 +24,6 @@ public class TokenController {
     this.jwtEncoder = jwtEncoder;
   }
 
-
   @PostMapping
   public String token(Authentication authentication) {
     Instant currentTime = Instant.now();

@@ -20,7 +20,7 @@ public class Tour {
     private String imageUrl;
 
     @Column(nullable = false)
-    private Integer duration; // in hours
+    private Integer duration;
 
     @Column(nullable = false)
     private BigDecimal price;

@@ -2,9 +2,9 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Home from "./components/main/Home";
 import TourDetail from "./components/tours/TourDetail";
 import Registration from "./components/auth/Registration";
-import Login from "./components/auth/Login"; // ✅ Import Login
-import MyBooking from "./components/tours/MyBooking"; // ✅ Correct Import
-import TourList from "./components/tours/TourList"; // ✅ Import TourList
+import Login from "./components/auth/Login"; 
+import MyBooking from "./components/tours/MyBooking"; 
+import TourList from "./components/tours/TourList"; 
 
 import NavBar from "./components/main/NavBar";
 import Footer from "./components/main/Footer";

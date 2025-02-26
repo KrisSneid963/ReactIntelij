@@ -2,6 +2,7 @@ package lt.techin.travel_agency.model;
 
 
 import jakarta.persistence.*;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -19,6 +20,7 @@ public class User implements UserDetails {
 
   private String email;
   private String name;
+  @Setter
   private String password;
 
   @ManyToMany(fetch = FetchType.EAGER)
@@ -93,10 +95,5 @@ public class User implements UserDetails {
     return true;
   }
 
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
-
-  }
+}
 

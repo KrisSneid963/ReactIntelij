@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-//pradet su bookingu tarp turu ir userriu IR ISILOGINUS MATYTU
+
 @Entity
 @Table(name = "bookings")
 public class Booking {

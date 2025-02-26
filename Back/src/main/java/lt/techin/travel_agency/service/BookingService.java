@@ -26,9 +26,7 @@ public class BookingService {
         this.tourRepository = tourRepository;
     }
 
-    /**
-     * ✅ Create a new booking for a user.
-     */
+
     @Transactional
     public String createBooking(Long userId, Long tourId, String bookedDate) {
         Optional<User> user = userRepository.findById(userId);
@@ -43,23 +41,15 @@ public class BookingService {
         return "Booking confirmed";
     }
 
-    /**
-     * ✅ Retrieve all bookings for a specific user.
-     */
+
     public List<Booking> getUserBookings(Long userId) {
         return bookingRepository.findByUserId(userId);
     }
 
-    /**
-     * ✅ Retrieve all bookings (Admin feature).
-     */
     public List<Booking> getAllBookings() {
         return bookingRepository.findAll();
     }
 
-    /**
-     * ✅ Confirm a booking by ID.
-     */
     @Transactional
     public String confirmBooking(Long bookingId) {
         Optional<Booking> bookingOpt = bookingRepository.findById(bookingId);
